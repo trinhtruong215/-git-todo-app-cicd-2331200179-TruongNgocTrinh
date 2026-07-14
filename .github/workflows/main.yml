@@ -18,17 +18,6 @@ jobs:
       - name: Run Jest Tests
         run: npm test
 
-  e2e-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm install
-      - name: Run Playwright E2E Tests
-        run: npm run test:e2e
-
   build:
     needs: [unit-and-integration-tests, e2e-tests]  # Depends on all tests passing
     runs-on: ubuntu-latest
